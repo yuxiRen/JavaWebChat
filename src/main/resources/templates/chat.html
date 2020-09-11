@@ -11,15 +11,15 @@
 <!--    <input id="messageName" type="text" th:field="*{name}">-->
     <label for="messageText">Message Text:</label>
     <input id="messageText" type="text" th:field="*{msg}">
-<!--    <label for="messageType">Mode: </label>-->
-<!--    <select id="messageType" th:field="*{mode}">-->
-<!--        <option-->
-<!--                th:each="type:${modes}"-->
-<!--                th:value="${type}"-->
-<!--                th:text="${type}">-->
-<!--            Say-->
-<!--        </option>-->
-<!--    </select>-->
+    <label for="messageType">Mode: </label>
+    <select id="messageType" th:field="*{mode}">
+        <option
+                th:each="type:${modes}"
+                th:value="${type}"
+                th:text="${type}">
+            Say
+        </option>
+    </select>
     <input type="submit">
 </form>
 
