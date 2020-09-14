@@ -2,9 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>SignUp</title>
 </head>
 <body>
+<label><a th:href="@{/login}">Back to Login</a></label>
+<h1>Sign Up</h1>
+<form action="#" th:action="@{/signup}" method="POST">
+    <div id="success-msg" th:if="${signupSuccess}">
+        You successfully signed up! Please continue to the <a id="login-link" th:href="@{/login}">login</a> page.
+    </div>
+    <div id="error-msg" th:if="${signupError}">
+        <span th:text="${signupError}"></span>
+    </div>
+    <div>
+        <label for="inputFirstName">First Name</label>
+        <input type="input" name="firstName" id="inputFirstName" placeholder="Enter First Name" maxlength="20" required>
+    </div>
+    <div>
+        <label for="inputLastName">Last Name</label>
+        <input type="input" name="lastName" id="inputLastName" placeholder="Enter Last Name" maxlength="20" required>
+    </div>
 
+    <div>
+        <label for="inputUsername">Username</label>
+        <input type="input" name="username" id="inputUsername" placeholder="Enter Username" maxlength="20" required>
+    </div>
+    <div>
+        <label for="inputPassword">Password</label>
+        <input type="password" name="password" id="inputPassword" placeholder="Enter Password" maxlength="20" required>
+    </div>
+
+    <button id="submit-button" type="submit">Sign Up</button>
+</form>
 </body>
 </html>
