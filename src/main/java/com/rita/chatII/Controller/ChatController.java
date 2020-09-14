@@ -2,14 +2,11 @@ package com.rita.chatII.Controller;
 
 import com.rita.chatII.Model.ChatForm;
 import com.rita.chatII.Service.ChatService;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
 @RequestMapping("/chat")
 public class ChatController {
     private ChatService service;
@@ -24,11 +21,10 @@ public class ChatController {
         return "chat";
     }
     @PostMapping
-    public String postChat(ChatForm chatForm, Model model) {
+    public String postChat(Authentication authentication, ChatForm chatForm, Model model) {
+        chatForm.setName(authentication.getName());
         service.addMessage(chatForm);
         chatForm.setMsg("");
-        chatForm.setName("");
-        chatForm.setMode("Say");
         model.addAttribute("chatMessages", service.getListMessages());
         return "chat";
     }
