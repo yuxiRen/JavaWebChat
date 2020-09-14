@@ -1,5 +1,6 @@
 package com.rita.chatII.Service;
 
+import com.rita.chatII.Mapper.MessageMapper;
 import com.rita.chatII.Model.ChatForm;
 import com.rita.chatII.Model.ChatMessage;
 import org.springframework.stereotype.Service;
@@ -10,15 +11,20 @@ import java.util.List;
 
 @Service
 public class ChatService {
-    private List<ChatMessage> listMessages;
-    @PostConstruct
-    public void postConstruct() {
-        this.listMessages = new ArrayList<>();
+    private MessageMapper messageMapper;
+
+    public ChatService(MessageMapper messageMapper) {
+        this.messageMapper = messageMapper;
     }
 
-    public List<ChatMessage> getListMessages() {
-        return listMessages;
-    }
+//    @PostConstruct
+//    public void postConstruct() {
+//        this.listMessages = new ArrayList<>();
+//    }
+
+//    public List<ChatMessage> getListMessages() {
+//        return listMessages;
+//    }
     public void addMessage(ChatForm chatForm) {
         ChatMessage newMessage = new ChatMessage();
         newMessage.setName(chatForm.getName());
@@ -33,6 +39,9 @@ public class ChatService {
                 newMessage.setMsg(chatForm.getMsg().toLowerCase());
                 break;
         }
-        listMessages.add(newMessage);
+        messageMapper.addMessage(newMessage);
+    }
+    public List<ChatMessage> getChatMessages() {
+        return messageMapper.getAllMessages();
     }
 }
