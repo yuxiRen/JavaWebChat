@@ -17,7 +17,7 @@ public class ChatController {
 
     @GetMapping
     public String getChat(@ModelAttribute("chatForm") ChatForm chatForm, Model model) {
-        model.addAttribute("chatMessages", service.getListMessages());
+        model.addAttribute("chatMessages", service.getChatMessages());
         return "chat";
     }
     @PostMapping
@@ -25,7 +25,7 @@ public class ChatController {
         chatForm.setName(authentication.getName());
         service.addMessage(chatForm);
         chatForm.setMsg("");
-        model.addAttribute("chatMessages", service.getListMessages());
+        model.addAttribute("chatMessages", service.getChatMessages());
         return "chat";
     }
     @ModelAttribute("modes")

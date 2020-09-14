@@ -2,7 +2,7 @@ package com.rita.chatII.Model;
 
 public class User {
     private Integer userId;
-    private String username;
+    private String name;
     private String salt;
     private String password;
     private String firstName;
@@ -10,7 +10,7 @@ public class User {
 
     public User(Integer userId, String username, String salt, String password, String firstName, String lastName) {
         this.userId = userId;
-        this.username = username;
+        this.name = username;
         this.salt = salt;
         this.password = password;
         this.firstName = firstName;
@@ -22,7 +22,7 @@ public class User {
     }
 
     public String getUsername() {
-        return username;
+        return name;
     }
 
     public String getSalt() {
@@ -46,7 +46,7 @@ public class User {
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.name = username;
     }
 
     public void setSalt(String salt) {

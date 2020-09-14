@@ -24,7 +24,7 @@
 </form>
 
 <div th:each="chatMessage : ${chatMessages}">
-<!--    <span th:text="${chatMessage.name}">Username</span>: -->
+    <span th:text="${chatMessage.name}">Username</span>:
     <span th:text="${chatMessage.msg}">Hello World!</span>
 </div>
 </body>
